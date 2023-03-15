@@ -1,5 +1,10 @@
+# Student Name : Meriç Bağlayan
+# Student ID   : 150190056
+# Course       : BLG 202E Numerical Methods 2023 Spring
+# Project      : Homework 1
+
 def rational_to_integer():
-    print("Decimal rational number to binary rational number converter")
+    print("Decimal rational number to binary number converter")
     
     print("Use the format a/b where a and b are integers.")
     print()
@@ -38,7 +43,9 @@ def rational_to_integer():
         denominator *= -1
     
     # Initial checks
-    if (numerator < denominator):
+    if (denominator == 0):
+        preRadix += "NaN. The input is not a rational number."
+    elif (numerator < denominator or numerator == 0):
         preRadix += "0"
     elif (numerator > denominator):
         preRadix += "1"
@@ -48,7 +55,7 @@ def rational_to_integer():
     
     # Main loop
     while (True):
-        if (numerator == denominator):
+        if (numerator == denominator or numerator == 0 or denominator == 0):
             break
         
         numerator *= 2
