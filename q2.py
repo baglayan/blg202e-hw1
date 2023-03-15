@@ -3,7 +3,21 @@
 # Course       : BLG 202E Numerical Methods 2023 Spring
 # Project      : Homework 1
 
-def rational_to_integer():
+from math import floor
+
+def decimal_integer_to_binary(decimalInput):
+    binaryOutput = ""
+
+    while (True):
+        binaryOutput += str(decimalInput % 2)
+        decimalInput //= 2
+        if (decimalInput == 0):
+            break
+    
+    return binaryOutput[::-1]
+
+
+def decimal_rational_to_binary():
     print("Decimal rational number to binary number converter")
     
     print("Use the format a/b where a and b are integers.")
@@ -24,9 +38,12 @@ def rational_to_integer():
         if (denominator % num == 0):
             factorsOfDenominator.append(num)
         
-    for factor in range (1, len(factorsOfDenominator)):
-        if (factor % num != 0):
+    for factor in factorsOfDenominator:
+        if (factor == 1):
+            continue
+        elif (factor % 2 != 0):
             hasFactorOthenThanTwo = True
+            break
     
     preRadix = ""
     postRadix = ""
@@ -48,14 +65,16 @@ def rational_to_integer():
     elif (numerator < denominator or numerator == 0):
         preRadix += "0"
     elif (numerator > denominator):
-        preRadix += "1"
-        numerator = numerator - denominator
-    else:
-        preRadix += "1"
-    
+        wholePart = floor(numerator / denominator)
+        numerator -= (wholePart * denominator)
+        preRadix += decimal_integer_to_binary(wholePart)
+
     # Main loop
     while (True):
-        if (numerator == denominator or numerator == 0 or denominator == 0):
+        if (numerator == denominator and preRadix == ""):
+            preRadix += "1"
+            break
+        elif (numerator == 0 or denominator == 0):
             break
         
         numerator *= 2
@@ -76,11 +95,11 @@ def rational_to_integer():
         if (hasFactorOthenThanTwo and len(postRadix) == 20):
             resultText += " (approximately): "
             break
-            
+
     if (resultText == "Binary number"):
         resultText += ": "
     
     # Printing the result
     print(resultText + preRadix) if postRadix == "" else print(resultText + preRadix + "." + postRadix)
     
-rational_to_integer()
+decimal_rational_to_binary()
