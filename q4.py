@@ -10,7 +10,7 @@ def f(x: float, cvar: float):
     result = float(x) ** (5) - cvar
     return result
 
-def interval_halving(a: int, b: int, epsilon: float, cvar: float):
+def interval_halving(a: float, b: float, epsilon: float, cvar: float):
     u = f(a, cvar)
     v = f(b, cvar)
     diff = b - a
@@ -41,4 +41,4 @@ def interval_halving(a: int, b: int, epsilon: float, cvar: float):
 a = float(input("a: "))
 epsilon = float(input("epsilon: "))
 
-print("x: " + str(interval_halving(-a, a, epsilon, a)) + " such that |a^⅕ - x| ≤ epsilon")
+print("x =  " + str(interval_halving(-a, a, epsilon, a)) + " such that |a^⅕ - x| ≤ epsilon")
