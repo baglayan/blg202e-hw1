@@ -5,6 +5,9 @@
 
 import sys
 
+class NegativeAbsoluteValueError(Exception):
+    "Exception raised when the value of absolute value is inferred to be negative."
+    pass
 
 def sign(x):
     return x / abs(x)
@@ -26,16 +29,14 @@ def interval_halving(a: float, b: float, steps: int, very_small_number: float, a
 
     midpoint = a + error
 
-    i = 1
-
     for k in range(1, steps):
         if (sign(u) == sign(v)):
             break
-        error /= 2
+        error /= 2.0
         midpoint = a + error
         w = f(midpoint, cvar)
 
-        if (abs(w) < very_small_number or abs(error) <= allowed_margin):
+        if (abs(w) < very_small_number or ((b - a) / 2) <= allowed_margin):
             return midpoint
 
         if (sign(w) != sign(u)):
@@ -44,6 +45,7 @@ def interval_halving(a: float, b: float, steps: int, very_small_number: float, a
         else:
             a = midpoint
             u = w
+        k += 1
 
     return midpoint
 
@@ -51,8 +53,18 @@ def interval_halving(a: float, b: float, steps: int, very_small_number: float, a
 try:
     a = float(input("a: "))
     epsilon_input = float(input("epsilon: "))
-except ValueError as err:
+    if (epsilon_input < 0):
+        raise NegativeAbsoluteValueError(epsilon_input)
+except (ValueError, NegativeAbsoluteValueError) as err:
     print("Invalid input: " + str(err))
     quit()
 
-print("x =  " + str(interval_halving(-a, a, sys.maxsize, sys.float_info.epsilon, epsilon_input, a)) + " such that |a^⅕ - x| ≤ epsilon")
+if (a >= 0):
+    result = interval_halving(-a, a, 1000000, sys.float_info.epsilon, epsilon_input, a)
+    # print ("absolute value evaluated to " + str(abs(pow(a, 1/5) - result)))
+    # print ("epsilon is: " + str(epsilon_input))
+else:
+    result = interval_halving(a, -a, 1000000, sys.float_info.epsilon, epsilon_input, a)
+
+print()
+print("x = " + str(result) + " such that |a^(1/5) - x| <= epsilon")
