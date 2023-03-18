@@ -1,0 +1,248 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \\documentclass[tikz, 11pt]\{article\}\
+\\usepackage[top=1in, bottom=1in, left=1in, right=1in]\{geometry\}\
+\\usepackage\{amsmath\}\
+\\usepackage\{amssymb\}\
+\\usepackage\{fancyhdr\}\
+\\usepackage\{cancel\}\
+\\usepackage\{witharrows\}\
+\\usepackage\{scrextend\}\
+\\usepackage\{xcolor\}\
+\\usepackage\{xfrac\}\
+\\usepackage\{multicol\}\
+\\definecolor\{darkgreen\}\{HTML\}\{33B856\}\
+\\usepackage\{karnaugh-map\}\
+\\usepackage\{stmaryrd\}\
+\\usepackage\{soul,xcolor\}\
+\\setstcolor\{red\}\
+\\usepackage\{hyperref\}\
+\\usepackage\{tcolorbox\}\
+\\tcbuselibrary\{minted,skins\}\
+\
+\
+\\newtcblisting\{bashcode\}[1][]\{\
+  listing engine=minted,\
+  colback=bashcodebg,\
+  colframe=black!70,\
+  listing only,\
+  minted style=colorful,\
+  minted language=bash,\
+  minted options=\{linenos=true,numbersep=3mm,texcl=true,#1\},\
+  left=5mm,enhanced,\
+  overlay=\{\\begin\{tcbclipinterior\}\\fill[black!25] (frame.south west)\
+            rectangle ([xshift=5mm]frame.north west);\\end\{tcbclipinterior\}\}\
+\}\
+\\definecolor\{bashcodebg\}\{rgb\}\{0.90,0.90,0.90\}\
+\
+\\let\\oldsqrt\\sqrt\
+%copied code: it defines the new \\sqrt in terms of the old one\
+\\def\\sqrt\{\\mathpalette\\DHLhksqrt\}\
+\\def\\DHLhksqrt#1#2\{%\
+\\setbox0=\\hbox\{$#1\\oldsqrt\{#2\\,\}$\}\\dimen0=\\ht0\
+\\advance\\dimen0-0.2\\ht0\
+\\setbox2=\\hbox\{\\vrule height\\ht0 depth -\\dimen0\}%\
+\{\\box0\\lower0.4pt\\box2\}\}\
+\
+\\def\\checkmark\{\\tikz\\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;\} \
+\
+\\pagestyle\{fancy\}\
+\\fancyhf\{\}\
+\\lhead\{Name: Meri\'e7 Ba\uc0\u287 layan\\\\Number: 150190056\}\
+\\rhead\{BLG 202E\\\\ \\today\}\
+\\chead\{\\LARGE\\textbf\{Homework 1\}\}\
+\\cfoot\{\\thepage\}\
+\\rfoot\{Work in Progress\}\
+\\title\{Homework 1\}\
+\\author\{Meri\'e7 Ba\uc0\u287 layan\}\
+\\date\{\\today\}\
+\
+\\begin\{document\}\
+\\section*\{Answer to Question 1\}\
+\\subsection*\{Writing $1621$ in binary:\}\
+To write the decimal number 1621 in binary, we can repeatedly divide it by 2 until we get * as the quotient and note the remainders. For this subquestion only, operator $/$ denotes integer division and $\\%$ denotes the modulus operation.\
+\\begin\{align*\}\
+1621 / 2 &= 810 & &\\text\{and\} & 1621 \\% 2 = 1 \\\\\
+810 / 2 &= 405 & &\\text\{and\} & 810 \\% 2 = 0 \\\\\
+405 / 2 &= 202 & &\\text\{and\} & 405 \\% 2 = 1 \\\\\
+202 / 2 &= 101 & &\\text\{and\} & 202 \\% 2 = 0 \\\\\
+101 / 2 &= 50 & &\\text\{and\} & 101 \\% 2 = 1 \\\\\
+50 / 2 &= 25 & &\\text\{and\} & 50 \\% 2 = 0 \\\\\
+25 / 2 &= 12 & &\\text\{and\} & 25 \\% 2 = 1 \\\\\
+12 / 2 &= 6 & &\\text\{and\} & 12 \\% 2 = 0 \\\\\
+6 / 2 &= 3 & &\\text\{and\} & 6 \\% 2 = 0 \\\\\
+3 / 2 &= 1 & &\\text\{and\} & 3 \\% 2 = 1 \\\\\
+1 / 2 &= 0 & &\\text\{and\} & 1 \\% 2 = 1 \\\\\
+\\end\{align*\}\
+The latest remainder will be the most significant bit, thus $(1621)_\{10\} = (11001010101)_2$.\
+\\clearpage\
+\\subsection*\{Writing $443/2048$ in binary:\}\
+Eventually, our number $\\dfrac\{443\}\{2048\}$ will be written in binary in this form:\
+$$0.a_1a_2a_3a_4...$$\
+Multiplying by 2, we will get\
+$$\\dfrac\{886\}\{2048\} = a_1.a_2a_3a_4... \\Longrightarrow a_1 = 0$$\
+Continuing in the same manner,\
+\\begin\{align*\}\
+\\dfrac\{1772\}\{2048\} &= a_2.a_3a_4a_5... & \\Longrightarrow a_2 &= 0 \\\\\
+\\dfrac\{3544\}\{2048\} &= 1 + \\dfrac\{1496\}\{2048\} = a_3.a_4a_5a_6... & \\Longrightarrow a_3 &= 1 \\\\\
+\\dfrac\{2992\}\{2048\} &= 1 + \\dfrac\{944\}\{2048\} = a_4.a_5a_6a_7... & \\Longrightarrow a_4 &= 1 \\\\\
+\\dfrac\{1888\}\{2048\} &= a_5.a_6a_7a_8... & \\Longrightarrow a_5 &= 0 \\\\\
+\\dfrac\{3776\}\{2048\} &= 1 + \\dfrac\{1728\}\{2048\} = a_6.a_7a_8a_9... & \\Longrightarrow a_6 &= 1 \\\\\
+\\dfrac\{3456\}\{2048\} &= 1 + \\dfrac\{1408\}\{2048\} = a_7.a_8a_9a_\{10\}... & \\Longrightarrow a_7 &= 1 \\\\\
+\\dfrac\{2816\}\{2048\} &= 1 + \\dfrac\{768\}\{2048\} = a_8.a_9a_\{10\}a_\{11\} & \\Longrightarrow a_8 &= 1 \\\\\
+\\dfrac\{1536\}\{2048\} &= a_9.a_\{10\}a_\{11\} & \\Longrightarrow a_9 &= 0 \\\\\
+\\dfrac\{3072\}\{2048\} &= 1 + \\dfrac\{1024\}\{2048\} = a_\{10\}.a_\{11\} & \\Longrightarrow a_\{10\} &= 1 \\\\\
+\\dfrac\{2048\}\{2048\} &= a_\{11\} & \\Longrightarrow a_\{11\} &= 1\
+\\end\{align*\}\
+\
+Thus $\\dfrac\{443\}\{2048\}$ in binary is $0.00110111011$\
+\\clearpage\
+\\section*\{Answer to Question 2\}\
+\\subsection*\{Code\}\
+\\href\{https://github.com/baglayan/blg202e-hw1/blob/main/q2.py\}\{Click here to view it on Github\} (was private before submission date).\
+\\subsection*\{Demonstration\}\
+\\subsubsection*\{Example 1: $\\frac\{443\}\{2048\}$\}\
+\\begin\{bashcode\}\
+Decimal rational number to binary number converter\
+Use the format a/b where a and b are integers.\
+\
+Rational decimal number: 443/2048\
+Binary number: 0.00110111011\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 2: $\\frac\{-507\}\{256\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: -507/256\
+Binary number: -1.11111011\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 3: $\\frac\{11\}\{11\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 11/11\
+Binary number: 1\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 4: $\\frac\{3\}\{-0\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 3/-0\
+Binary number: NaN. The input is not a rational number.\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 5: $\\frac\{51\}\{53\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 51/53\
+Binary number (approximately): 0.11110110010101101111\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 6: $\\frac\{5\}\{2\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 5/2\
+Binary number: 10.1\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 7: $\\frac\{3612\}\{32\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 3612/32\
+Binary number: 1110000.111\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 8: $\\frac\{231\}\{9\}$\}\
+\\begin\{bashcode\}\
+\\\\[...]\
+\
+Rational decimal number: 231/9\
+Binary number (approximately): 11001.10101010101010101010\
+\\end\{bashcode\}\
+\\clearpage\
+\\section*\{Answer to Question 3\}\
+\\subsection*\{Approximation of $17^\{\\frac\{1\}\{3\}\}$ via Bisection Method\}\
+The function which we will approximate the root of is  $$f(x) = x^3 - 17$$\
+We will choose our interval as $[2, 3]$. The chosen midpoints are colored red.\
+\\begin\{align*\}\
+f(2) = -9, f(3) = 10 &: f(a_0)f(b_0) < 0  \\Rightarrow c_0 = 2.5\\\\\
+f(\\textcolor\{red\}\{2.5\}) = -1.375, f(3) = 10 &: f(a_1)f(b_1) < 0 \\Rightarrow c_1 = 2.75\\\\\
+f(2.5) = -1.375, f(\\textcolor\{red\}\{2.75\}) \\approx 3.8 &: f(a_2)f(b_2) < 0 \\Rightarrow c_2 = 2.625\\\\\
+f(2.5) = -1.375, f(\\textcolor\{red\}\{2.625\}) \\approx 1.08 &: f(a_3)f(b_3) < 0 \\Rightarrow c_3 = 2.5625\\\\\
+f(\\textcolor\{red\}\{2.5625\}) \\approx -0.17, f(2.625) \\approx 1.08 &: f(a_4)f(b_4) < 0 \\Rightarrow c_4 = 2.59375\\\\\
+f(2.5625) \\approx -0.17, f(\\textcolor\{red\}\{2.59375\}) \\approx 0.45 &: f(a_5)f(b_5) < 0 \\Rightarrow c_5 = 2.578125\\\\\
+f(2.5625) \\approx -0.17, f(\\textcolor\{red\}\{2.578125\}) \\approx 0.14 &: f(a_6)f(b_6) < 0 \\Rightarrow c_6 = 2.5703125\\\\\
+f(\\textcolor\{red\}\{2.5703125\}) \\approx -0.02, f(2.578125) \\approx 0.14 &: f(a_7)f(b_7) < 0 \\Rightarrow c_7 = 2.57421875\\\\\
+f(2.5703125) \\approx -0.02, f(\\textcolor\{red\}\{2.57421875\}) \\approx 0.06 &: f(a_8)f(b_8) < 0 \\Rightarrow c_8 = 2.572265625\\\\\
+f(2.5703125) \\approx -0.02, f(\\textcolor\{red\}\{2.572265625\}) \\approx 0.02 &: f(a_9)f(b_9) < 0 \\Rightarrow c_9 = 2.5712890625\\\\\
+\\end\{align*\}\
+\
+At this point we can take the midpoint of $a_9$ and $b_9$ and consider it our approximation.\
+\
+$$c_9 = \\dfrac\{a_9 + b_9\}\{2\} = \\dfrac\{2.5703125 + 2.572265625\}\{2\} = 2.5712890625$$\
+\
+\\subsection*\{Error in our computation\}\
+The value of $17^\{\\frac\{1\}\{3\}\}$ rounded to have the same amount of figures as our approximation: $$r = 17^\{\\frac\{1\}\{3\}\} = 2.5712815907$$\
+Computing the error:\
+\\begin\{align*\}\
+    |r-c_9| &\\le b_9-a_9 \\\\\
+    |2.5712815907-2.5712890625| &\\le 2.572265625 - 2.5703125 \\\\\
+    7.4718 * 10^\{-6\}&\\le 1.95312500 * 10^\{-3\}\
+\\end\{align*\}\
+$$\\text\{Absolute error\} = 7.4718 * 10^\{-6\}$$\
+$$\\text\{Relative error\} = \\dfrac\{7.4718 * 10^\{-6\}\}\{2.5712815907\} \\approx \\%0.0003$$\
+\\clearpage\
+\\section*\{Answer to Question 4\}\
+\\subsection*\{Code\}\
+\\href\{https://github.com/baglayan/blg202e-hw1/blob/main/q4.py\}\{Click here to view it on Github\} (was private before submission date).\
+\\subsection*\{Demonstration\}\
+\\subsubsection*\{Example 1\}\
+\\begin\{bashcode\}\
+a: -3.14159\
+epsilon: 0.5\
+\
+x = -1.1780962499999998 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\begin\{bashcode\}\
+a: -3.14159\
+epsilon: 0.00001\
+\
+x = -1.2572699649620056 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+In case of $\\epsilon = 0$, the calculation stops after one million steps.\
+\\begin\{bashcode\}\
+a: -3.14159\
+epsilon: 0\
+\
+x = -1.2572739032743105 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\subsubsection*\{Example 2\}\
+\\begin\{bashcode\}\
+a: 4096\
+epsilon: 20\
+\
+x = 16.0 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\begin\{bashcode\}\
+a: 4096\
+epsilon: 2\
+\
+x = 6.0 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\begin\{bashcode\}\
+a: 4096\
+epsilon: 0.01\
+\
+x = 5.2734375 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\begin\{bashcode\}\
+a: 4096\
+epsilon: 0\
+\
+x = 5.278031643091577 such that |a^(1/5) - x| <= epsilon\
+\\end\{bashcode\}\
+\\end\{document\}}
