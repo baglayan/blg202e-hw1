@@ -1,5 +1,5 @@
 # Student Name : Meriç Bağlayan
-#  Student ID   : 150190056
+# Student ID   : 150190056
 # Course       : BLG 202E Numerical Methods 2023 Spring
 # Project      : Homework 1
 
